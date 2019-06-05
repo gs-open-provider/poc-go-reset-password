@@ -14,7 +14,7 @@ func main() {
 	configs.InitializeViper()
 	logger.InitializeZapCustomLogger()
 
-	http.HandleFunc("/", services.HandleIndex)
+	http.HandleFunc("/index", services.HandleIndex)
 	http.HandleFunc("/reset-password", services.ResetPassword)
 	http.HandleFunc("/reset-password-callback", services.ResetPasswordCallback)
 

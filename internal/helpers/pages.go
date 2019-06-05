@@ -11,19 +11,23 @@ const IndexPage = `
 			<script type="text/javascript">
 
 				resetPassword = () => {
-					console.log("Reset Password Clicked..");
-					$.ajax({
-						url: "http://192.168.60.11:9090/reset-password",
-						type: 'post',
-						data: JSON.stringify({
-								username: "user",
-								email: "prashanth@gapstars.net"
-							}),
-						success: function(data) {
-							result = JSON.parse(data);
-							console.log(result);
-						}
-					});
+					console.log("Reset Password Clicked..", $('#email').val());
+					if ($('#email').val() !== "") {
+						$.ajax({
+							url: "http://192.168.60.11:9090/reset-password",
+							type: 'post',
+							data: JSON.stringify({
+									username: $('#username').val(),
+									email: $('#email').val()
+								}),
+							success: function(data) {
+								result = JSON.parse(data);
+								console.log(result);
+							}
+						});
+					} else {
+						console.log("Please enter email address..");
+					}
 				}
 
 			</script>
@@ -31,9 +35,21 @@ const IndexPage = `
     <body>
 			<div class="container">
 				<h2>POC on Reset Password in GO</h2>
-				<p>
-					<button class="btn btn-primary" onclick="resetPassword()">Reset Password</button>
-				</p>
+				<div style="padding-top: 25px; padding-left: 100px;">
+					<table>
+						<tr>
+							<td style="width: 100px;"><label>UserName:</label></td>
+							<td><label><input id="username" type="text" name="username" /></td>
+						</tr>
+						<tr>
+							<td style="width: 100px;"><label>Email:</label></td>
+							<td><label><input id="email" type="text" name="email" /></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><button class="btn btn-primary pull-right" onclick="resetPassword()">Reset Password</button></td>
+						</tr>
+				</div>
 			</div>
     </body>
 </html>
