@@ -15,6 +15,7 @@ func main() {
 	logger.InitializeZapCustomLogger()
 
 	http.HandleFunc("/index", services.HandleIndex)
+	http.HandleFunc("/email-sent", services.HandleEmailSent)
 	http.HandleFunc("/reset-password", services.ResetPassword)
 	http.HandleFunc("/reset-password-callback", services.ResetPasswordCallback)
 

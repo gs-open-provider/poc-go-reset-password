@@ -40,17 +40,19 @@ func HandleResetPassword(w http.ResponseWriter, r *http.Request) {
 		helpers.GetResetPasswordTemplate("http://192.168.60.11:9090/reset-password-callback?token="+jwtToken),
 	)
 	client := sendgrid.NewSendClient(viper.GetString("sendgrid-apikey"))
-	response, err := client.Send(message)
+	_, err = client.Send(message)
 	if err != nil {
 		logger.Log.Info(err.Error())
 		w.Write([]byte("Password Reset Failed.."))
 		return
 	}
-	logger.Log.Info(string(response.StatusCode))
-	logger.Log.Info(response.Body)
-	// logger.Log.Info(response.Headers)
+	logger.Log.Info("Email Sent..")
+	http.Redirect(w, r, "/email-sent", http.StatusTemporaryRedirect)
+}
+
+// HandleEmailSent Function
+func HandleEmailSent(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Password Reset Email Sent.."))
-	return
 }
 
 // HandleResetPasswordCallback Function

@@ -21,8 +21,8 @@ const IndexPage = `
 									email: $('#email').val()
 								}),
 							success: function(data) {
-								result = JSON.parse(data);
-								console.log(result);
+								console.log("Email Sent..");
+								window.location.href = "http://192.168.60.11:9090/email-sent";
 							}
 						});
 					} else {
