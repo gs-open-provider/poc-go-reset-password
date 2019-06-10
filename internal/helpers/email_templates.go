@@ -20,7 +20,7 @@ func GetResetPasswordTemplate(link string) string {
 		<br /><br />
 		` + link + `
 		<br /><br />
-		If you don’t use this link within 30 mins, it will expire. To get a new password reset link, visit http://192.168.60.11:9090/index
+		If you don’t use this link within 30 mins, it will expire. To get a new password reset link, visit http://localhost:9090/index
 		<br /><br />
 		Thanks,
 		<br />

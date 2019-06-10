@@ -14,7 +14,7 @@ const IndexPage = `
 					console.log("Reset Password Clicked..", $('#email').val());
 					if ($('#email').val() !== "") {
 						$.ajax({
-							url: "http://192.168.60.11:9090/reset-password",
+							url: "http://localhost:9090/reset-password",
 							type: 'post',
 							data: JSON.stringify({
 									username: $('#username').val(),
@@ -22,7 +22,7 @@ const IndexPage = `
 								}),
 							success: function(data) {
 								console.log("Email Sent..");
-								window.location.href = "http://192.168.60.11:9090/email-sent";
+								window.location.href = "http://localhost:9090/email-sent";
 							}
 						});
 					} else {
